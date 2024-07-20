@@ -1,181 +1,198 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Register</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <style>
-        *{
-    margin: 0;
-    padding: 0;
-}
-:root{
-    --color:#595959;
-    --background:#dde1e7;
-    --hover:#3498db;
-    --box-shadow: -3px -3px 7px #ffffff73,
-                    2px 2px 5px rgba(94,104,121,0.288);
-    --inset-boxshadow: inset 2px 2px 5px #babecc,
-                        inset -5px -5px 10px #ffffff73;
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        :root {
+            --color: #595959;
+            --background: #dde1e7;
+            --hover: #3498db;
+            --box-shadow: -3px -3px 7px #ffffff73,
+                            2px 2px 5px rgba(94, 104, 121, 0.288);
+            --inset-boxshadow: inset 2px 2px 5px #babecc,
+                                inset -5px -5px 10px #ffffff73;
 
-}
-.container-fluid{
-   
-    width: 100%;
-    min-height: 100vh;
-    background: #dde1e7;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    
-}
-.container{
-    width: 25%;
-    color: #595959;
-    padding: 40px 25px;
-    border: none;
-    border-radius: 15px;
-    box-shadow: -3px -3px 7px #ffffff73,
-                2px 2px 5px rgba(94,104,121,0.288);
-}
-.container h1{
-    text-align: center;
-    padding-bottom: 30px;
-}
-.container label{
-    font-size: 20px;
-    padding: 5px 15px;
-}
-.container select{
-    width: 75%;
-    min-height: 31px;
-    outline: none;
-    border: none;
-    color: var(--hover);
-    font-weight: 500;
-    background: #dde1e7;
-    padding-left: 10px;
-    font-size: 15px;
-    border-radius: 10px;
-    box-shadow: var(--box-shadow);
-}
-.container input{
-    width: 73%;
-    min-height: 27px;
-    outline: none;
-    border: none;
-    color: var(--color);
-    font-weight: 500;
-    background: #dde1e7;
-    padding-left: 10px;
-    font-size: 15px;
-    border-radius: 10px;
-    box-shadow: var(--box-shadow);
-}
-.container input:focus{
-    color: var(--hover);
-    box-shadow: var(--inset-boxshadow);
-}
-.container>button{
-    margin: 0 10px 10px 0;
-    border: none;
-    color: var(--color);
-    padding: 5px 12px;
-    font-size: 20px;
-    border-radius: 10px;
-    float: right;
-    background-color: var(--background);
-    box-shadow: var(--box-shadow);
-}
-.container>button:focus{
-    color: var(--hover);
-    box-shadow: var(--inset-boxshadow);
-}
-form>button{
-    margin: 15px 10px 10px 0;
-    border: 1px solid var(--color);
-    color: var(--color);
-    padding: 5px 12px;
-    font-size: 20px;
-    border-radius: 10px;
-    float: inline-end;
-    background-color:#b6d3aa;
-    
-}
-form>button:focus{
-    color: var(--hover);
-    box-shadow: var(--inset-boxshadow);
-}
+        }
 
-#stopwatch {
-    text-align: center;
-    font-family: Arial, sans-serif;
-    font-size: 45px;
-    font-weight: 600;
-    margin: 15px 0;
-}
+        section {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--background);
+        }
 
-#stopwatch>button {
-    margin:30px 8px 15px 0;
-    font-size: 20px;
-    padding: 5px 12px;
-    border: 1px solid var(--color);
-    color: var(--color);
-    cursor: pointer;
-    border-radius: 10px;
+        .driver {
+            margin-top: 70px;
+            width: auto;
+            color: #595959;
+            padding: 25px 25px;
+            border: none;
+            border-radius: 15px;
+            box-shadow: -3px -3px 7px #ffffff73,
+                2px 2px 5px rgba(94, 104, 121, 0.288);
+        }
+        
+        .driver h1 {
+            text-align: center;
+            padding-bottom: 30px;
+        }
 
-}
-#stopwatch>button:focus{
-    border: none;
-    color: var(--hover);
-    box-shadow: var(--inset-boxshadow);
+        .driver label {
+            font-size: 20px;
+            padding: 5px 15px;
+        }
+        
+        .driver select {
+            width: 65%;
+            min-height: 31px;
+            outline: none;
+            border: none;
+            color: var(--hover);
+            font-weight: 500;
+            background: #dde1e7;
+            padding-left: 10px;
+            font-size: 15px;
+            border-radius: 10px;
+            box-shadow: var(--box-shadow);
+        }
 
-}
+        .driver input {
+            width: 65%;
+            min-height: 29px;
+            outline: none;
+            border: none;
+            color: var(--color);
+            font-weight: 500;
+            background: #dde1e7;
+            padding-left: 10px;
+            font-size: 15px;
+            border-radius: 10px;
+            box-shadow: var(--box-shadow);
+        }
 
-#loading {
-    display: none;
-    font-size: 16px;
-    color: var(--hover);
-}
+        .driver input:focus {
+            color: var(--hover);
+            box-shadow: var(--inset-boxshadow);
+        }
+        .record>button {
+            margin: 0 10px 10px 0;
+            border: none;
+            color: var(--color);
+            padding: 5px 12px;
+            font-size: 20px;
+            border-radius: 10px;
+            float: right;
+            background-color: var(--background);
+            box-shadow: var(--box-shadow);
+        }
+
+        .record>button:focus {
+            color: var(--hover);
+            box-shadow: var(--inset-boxshadow);
+        }
+
+        form>button {
+            margin: 15px 10px 10px 0;
+            border: 1px solid var(--color);
+            color: var(--color);
+            padding: 5px 12px;
+            font-size: 20px;
+            border-radius: 10px;
+            float: inline-end;
+            background-color: #b6d3aa;
+
+        }
+
+        form>button:focus {
+            color: var(--hover);
+            box-shadow: var(--inset-boxshadow);
+        }
+
+        #stopwatch {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            font-size: 45px;
+            font-weight: 600;
+            margin: 15px 0;
+        }
+
+        #stopwatch>button {
+            margin: 30px 8px 15px 0;
+            font-size: 20px;
+            padding: 5px 12px;
+            border: 1px solid var(--color);
+            color: var(--color);
+            cursor: pointer;
+            border-radius: 10px;
+
+        }
+
+        #stopwatch>button:focus {
+            border: none;
+            color: var(--hover);
+            box-shadow: var(--inset-boxshadow);
+
+        }
+
+        #loading {
+            display: none;
+            font-size: 16px;
+            color: var(--hover);
+        }
+
+       
+
+
+      
     </style>
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="container">
-            <h1>Register</h1>
-            <label for="sheetName">Name :</label>
-            <select id="sheetName" name="sheetName" required></select><br><br>
+    <section>
+        <div class="driver">
+            <div class="record">
+                <h1>Register</h1>
+                <label for="sheetName">Name :</label>
+                <select id="sheetName" name="sheetName" required></select><br><br>
 
-            <!-- Stopwatch Display -->
-            <div id="stopwatch">
-                <span id="time">00:00:00</span><br>
-                <button id="play" style="background-color: #c1d5c0;">Play</button>
-                <button id="pause" style="background-color: #c2cbe0;">Pause</button>
-                <button id="reset" style="background-color: #e0e0e0;">Reset</button>
+                <!-- Stopwatch Display -->
+                <div id="stopwatch">
+                    <span id="time">00:00:00</span><br>
+                    <button id="play" style="background-color: #c1d5c0;">Play</button>
+                    <button id="pause" style="background-color: #c2cbe0;">Pause</button>
+                    <button id="reset" style="background-color: #e0e0e0;">Reset</button>
+                </div>
+
+                <!-- Stopwatch Time Input -->
+                <label for="timeInput">Time :</label>
+                <input type="text" id="timeInput" name="timeInput" readonly disabled><br><br>
+
+                <!-- Rate Input and Calculate Button -->
+                <label for="rate">Rate &nbsp;:</label>
+                <input type="number" id="rate" name="rate" step="0.01" placeholder="Rs. per hour" required><br><br>
+                <button id="calculate">Calculate</button><br><br>
+
+                <!-- Loading Indicator -->
+                <div id="loading">Submitting...</div>
+                <br>
+                <!-- Registration Form -->
+                <form id="registerForm">
+                    <label for="totalRupees">Total:</label>
+                    <input type="text" id="totalRupees" name="totalRupees" required><br><br>
+                    <button type="submit" id="submitBtn">Submit</button>
+                </form>
             </div>
-
-            <!-- Stopwatch Time Input -->
-            <label for="timeInput">Time :</label>
-            <input type="text" id="timeInput" name="timeInput" readonly disabled><br><br>
-
-            <!-- Rate Input and Calculate Button -->
-            <label for="rate">Rate &nbsp;:</label>
-            <input type="number" id="rate" name="rate" step="0.01" placeholder="Rs. per hour" required><br><br>
-            <button id="calculate">Calculate</button><br><br>
-
-            <!-- Loading Indicator -->
-            <div id="loading">Submitting...</div>
-            <br>
-            <!-- Registration Form -->
-            <form id="registerForm">
-                <label for="totalRupees">Total:</label>
-                <input type="text" id="totalRupees" name="totalRupees" required><br><br>
-                <button type="submit" id="submitBtn">Submit</button>
-            </form>
         </div>
-    </div>
-
+    </section>
 
     <script>
         // Stopwatch Logic
