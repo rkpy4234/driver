@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Register</title>
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+}
+:root{
+    --color:#595959;
+    --background:#dde1e7;
+    --hover:#3498db;
+    --box-shadow: -3px -3px 7px #ffffff73,
+                    2px 2px 5px rgba(94,104,121,0.288);
+    --inset-boxshadow: inset 2px 2px 5px #babecc,
+                        inset -5px -5px 10px #ffffff73;
+
+}
+.container-fluid{
+   
+    width: 100%;
+    min-height: 100vh;
+    background: #dde1e7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+.container{
+    width: 25%;
+    color: #595959;
+    padding: 40px 25px;
+    border: none;
+    border-radius: 15px;
+    box-shadow: -3px -3px 7px #ffffff73,
+                2px 2px 5px rgba(94,104,121,0.288);
+}
+.container h1{
+    text-align: center;
+    padding-bottom: 30px;
+}
+.container label{
+    font-size: 20px;
+    padding: 5px 15px;
+}
+.container select{
+    width: 75%;
+    min-height: 31px;
+    outline: none;
+    border: none;
+    color: var(--hover);
+    font-weight: 500;
+    background: #dde1e7;
+    padding-left: 10px;
+    font-size: 15px;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+}
+.container input{
+    width: 73%;
+    min-height: 27px;
+    outline: none;
+    border: none;
+    color: var(--color);
+    font-weight: 500;
+    background: #dde1e7;
+    padding-left: 10px;
+    font-size: 15px;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+}
+.container input:focus{
+    color: var(--hover);
+    box-shadow: var(--inset-boxshadow);
+}
+.container>button{
+    margin: 0 10px 10px 0;
+    border: none;
+    color: var(--color);
+    padding: 5px 12px;
+    font-size: 20px;
+    border-radius: 10px;
+    float: right;
+    background-color: var(--background);
+    box-shadow: var(--box-shadow);
+}
+.container>button:focus{
+    color: var(--hover);
+    box-shadow: var(--inset-boxshadow);
+}
+form>button{
+    margin: 15px 10px 10px 0;
+    border: 1px solid var(--color);
+    color: var(--color);
+    padding: 5px 12px;
+    font-size: 20px;
+    border-radius: 10px;
+    float: inline-end;
+    background-color:#b6d3aa;
+    
+}
+form>button:focus{
+    color: var(--hover);
+    box-shadow: var(--inset-boxshadow);
+}
+
+#stopwatch {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 45px;
+    font-weight: 600;
+    margin: 15px 0;
+}
+
+#stopwatch>button {
+    margin:30px 8px 15px 0;
+    font-size: 20px;
+    padding: 5px 12px;
+    border: 1px solid var(--color);
+    color: var(--color);
+    cursor: pointer;
+    border-radius: 10px;
+
+}
+#stopwatch>button:focus{
+    border: none;
+    color: var(--hover);
+    box-shadow: var(--inset-boxshadow);
+
+}
+
+#loading {
+    display: none;
+    font-size: 16px;
+    color: var(--hover);
+}
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="container">
+            <h1>Register</h1>
+            <label for="sheetName">Name :</label>
+            <select id="sheetName" name="sheetName" required></select><br><br>
+
+            <!-- Stopwatch Display -->
+            <div id="stopwatch">
+                <span id="time">00:00:00</span><br>
+                <button id="play" style="background-color: #c1d5c0;">Play</button>
+                <button id="pause" style="background-color: #c2cbe0;">Pause</button>
+                <button id="reset" style="background-color: #e0e0e0;">Reset</button>
+            </div>
+
+            <!-- Stopwatch Time Input -->
+            <label for="timeInput">Time :</label>
+            <input type="text" id="timeInput" name="timeInput" readonly disabled><br><br>
+
+            <!-- Rate Input and Calculate Button -->
+            <label for="rate">Rate &nbsp;:</label>
+            <input type="number" id="rate" name="rate" step="0.01" placeholder="Rs. per hour" required><br><br>
+            <button id="calculate">Calculate</button><br><br>
+
+            <!-- Loading Indicator -->
+            <div id="loading">Submitting...</div>
+            <br>
+            <!-- Registration Form -->
+            <form id="registerForm">
+                <label for="totalRupees">Total:</label>
+                <input type="text" id="totalRupees" name="totalRupees" required><br><br>
+                <button type="submit" id="submitBtn">Submit</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script>
+        // Stopwatch Logic
+        let timer;
+        let elapsedTime = 0;
+        let isRunning = false;
+
+        function formatTime(ms) {
+            const date = new Date(ms);
+            return date.toISOString().substr(11, 8);
+        }
+
+        function startStopwatch() {
+            if (!isRunning) {
+                isRunning = true;
+                timer = setInterval(() => {
+                    elapsedTime += 1000;
+                    document.getElementById('time').textContent = formatTime(elapsedTime);
+                }, 1000);
+            }
+        }
+
+        function pauseStopwatch() {
+            if (isRunning) {
+                clearInterval(timer);
+                timer = null;
+                isRunning = false;
+            }
+        }
+
+        function resetStopwatch() {
+            // Store the current time in the input field
+            document.getElementById('timeInput').value = formatTime(elapsedTime);
+
+            // Reset the stopwatch
+            pauseStopwatch();
+            elapsedTime = 0;
+            document.getElementById('time').textContent = formatTime(elapsedTime);
+        }
+
+        function calculateCost() {
+            const timeInput = document.getElementById('timeInput').value;
+            const rate = parseFloat(document.getElementById('rate').value);
+
+            if (!timeInput || isNaN(rate)) {
+                alert('Please make sure time and rate are valid.');
+                return;
+            }
+
+            // Convert timeInput (HH:MM:SS) to total hours
+            const [hours, minutes, seconds] = timeInput.split(':').map(Number);
+            const totalHours = hours + minutes / 60 + seconds / 3600;
+
+            // Calculate cost
+            const cost = totalHours * rate;
+
+            // Update the totalRupees field with the calculated cost
+            document.getElementById('totalRupees').value = cost.toFixed(2);
+        }
+
+        document.getElementById('play').addEventListener('click', startStopwatch);
+        document.getElementById('pause').addEventListener('click', pauseStopwatch);
+        document.getElementById('reset').addEventListener('click', resetStopwatch);
+        document.getElementById('calculate').addEventListener('click', calculateCost);
+
+        // Prevent multiple form submissions
+        document.getElementById('registerForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const submitBtn = document.getElementById('submitBtn');
+            const loadingIndicator = document.getElementById('loading');
+
+            // Disable the submit button
+            submitBtn.disabled = true;
+            // Show the loading indicator
+            loadingIndicator.style.display = 'block';
+
+            const totalRupees = document.getElementById('totalRupees').value;
+            const sheetName = document.getElementById('sheetName').value;
+            const timeInput = document.getElementById('timeInput').value;
+            const rate = document.getElementById('rate').value;
+
+            try {
+                const response = await fetch('https://script.google.com/macros/s/AKfycby5mRMA_HH-ojgiWHPdrBV6JQtusHO6UXji_WId1MPvi2hNAkepJ4fpHbAYWkpwqYHnhg/exec?action=submitData', { // Replace with your deployment URL
+                    method: 'POST',
+                    body: JSON.stringify({ totalRupees, sheetName, timeInput, rate })
+                });
+
+                const result = await response.json();
+                alert(result.message);
+                window.location.reload();
+            } catch (error) {
+                console.error('Error submitting data:', error);
+                alert('Failed to submit data');
+            } finally {
+                // Enable the submit button and hide the loading indicator
+                submitBtn.disabled = false;
+                loadingIndicator.style.display = 'none';
+            }
+        });
+
+        // Fetch sheet names
+        const fetchSheetNames = async () => {
+            try {
+                const response = await fetch('https://script.google.com/macros/s/AKfycby5mRMA_HH-ojgiWHPdrBV6JQtusHO6UXji_WId1MPvi2hNAkepJ4fpHbAYWkpwqYHnhg/exec?action=getSheetNames'); // Replace with your deployment URL
+                const data = await response.json();
+                const select = document.getElementById('sheetName');
+                data.sheetNames.forEach(sheet => {
+                    const option = document.createElement('option');
+                    option.value = sheet.name;
+                    option.textContent = sheet.name;
+                    select.appendChild(option);
+                });
+            } catch (error) {
+                console.error('Error fetching sheet names:', error);
+            }
+        };
+
+        fetchSheetNames();
+    </script>
+</body>
+
+</html>
