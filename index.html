@@ -5,352 +5,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-        :root {
-            --color: #595959;
-            --background: #dde1e7;
-            --hover: #3498db;
-            --box-shadow: -3px -3px 7px #ffffff73,
-                            2px 2px 5px rgba(94, 104, 121, 0.288);
-            --inset-boxshadow: inset 2px 2px 5px #babecc,
-                                inset -5px -5px 10px #ffffff73;
-
-        }
-
-        section {
-            width: 100%;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: var(--background);
-        }
-
-        .driver {
-            margin-top: 70px;
-            width: 20%;
-            color: #595959;
-            padding: 25px 15px;
-            border: none;
-            border-radius: 15px;
-            box-shadow: -3px -3px 7px #ffffff73,
-                2px 2px 5px rgba(94, 104, 121, 0.288);
-        }
-        @media(max-width:900px){
-            .driver{
-                width: 90%;
-                padding: 25px 10px;
-            }
-        }
-        
-        .driver h1 {
-            font-size: 30px;
-            text-align: center;
-            padding-bottom: 30px;
-        }
-
-        .driver label {
-            font-size: 20px;
-            padding: 5px 15px;
-        }
-        
-        .driver select {
-            margin-left: 5px;
-            width: 30%;
-            min-height: 30px;
-            outline: none;
-            border: none;
-            color: var(--hover);
-            font-weight: 500;
-            background: #dde1e7;
-            padding-left: 10px;
-            font-size: 15px;
-            border-radius: 10px;
-            box-shadow: var(--box-shadow);
-        }
-
-        .driver input {
-            width: 68%;
-            min-height: 29px;
-            outline: none;
-            border: none;
-            color: var(--color);
-            font-weight: 500;
-            background: #dde1e7;
-            padding-left: 10px;
-            font-size: 15px;
-            border-radius: 10px;
-            box-shadow: var(--box-shadow);
-        }
-
-        .driver input:focus {
-            color: var(--hover);
-            box-shadow: var(--inset-boxshadow);
-        }
-        .record>button {
-            margin: 0 10px 10px 0;
-            border: none;
-            color: var(--color);
-            padding: 5px 12px;
-            font-size: 20px;
-            border-radius: 10px;
-            float: right;
-            background-color: var(--background);
-            box-shadow: var(--box-shadow);
-        }
-
-        .record>button:focus {
-            color: var(--hover);
-            box-shadow: var(--inset-boxshadow);
-        }
-
-        form>button {
-            margin: 15px 10px 10px 0;
-            border: 1px solid var(--color);
-            color: var(--color);
-            padding: 5px 12px;
-            font-size: 20px;
-            border-radius: 10px;
-            float: inline-end;
-            background-color: #b6d3aa;
-
-        }
-
-        form>button:focus {
-            color: var(--hover);
-            box-shadow: var(--inset-boxshadow);
-        }
-
-        #stopwatch {
-            text-align: center;
-            font-family: Arial, sans-serif;
-            font-size: 45px;
-            font-weight: 600;
-            margin: 15px 0;
-        }
-
-        #stopwatch>button {
-            margin: 30px 8px 15px 0;
-            font-size: 20px;
-            padding: 5px 12px;
-            border: 1px solid var(--color);
-            color: var(--color);
-            cursor: pointer;
-            border-radius: 10px;
-
-        }
-
-        #stopwatch>button:focus {
-            border: none;
-            color: var(--hover);
-            box-shadow: var(--inset-boxshadow);
-
-        }
-
-        #loading {
-            display: none;
-            font-size: 16px;
-            color: var(--hover);
-        }
-
-       
-
-
-      
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/css/driver/driver.css">
 </head>
 
 <body>
+    <header>
+        <nav>
+            <div class="nav-logo">
+                <a style="text-decoration: none;" href="index.html">
+                    <h1>RKPY</h1>
+                </a>
+            </div>
+            <div class="searchBox">
+                <i class='bx bx-menu open'></i>
+                <i class='bx bx-x close'></i>
+            </div>
+            <ul class="header-main">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="start.html">Start</a></li>
+                <li><a href="calculate.html">Calculator</a></li>
+                <li><a href="payment.html">Payment</a></li>
+                <li><a href="create.html">New</a></li>
+                <li><a href="https://www.ramkrishna4234.com.np/">LogOut</a></li>
+            </ul>
+        </nav>
+        <!-- light and dark mode -->
+        <div class="darkLight-searchBox">
+            <div class="dark-light">
+                <i class='bx bx-moon moon'></i>
+                <i class='bx bx-sun sun'></i>
+            </div>
+        </div>
+    </header>
+
     <section>
-        <div class="driver">
-            <div class="record">
-                <h1>Stop Watch</h1>
-                <label for="sheetName">Name :</label>
-                <select id="sheetName" name="sheetName" required></select>
-
-                <!-- Type Dropdown -->
-                <select id="type" name="type" required>
-                    <option value="Rotavator">Rotavator</option>
-                    <option value="Kalti">Kalti</option>
-                    <option value="Reaper">Reaper</option>
-                    <option value="Bojha">Bojha</option>
-                </select><br><br>
-
-                <!-- Stopwatch Display -->
-                <div id="stopwatch">
-                    <span id="time">00:00:00</span><br>
-                    <button id="play" style="background-color: #c1d5c0;">Play</button>
-                    <button id="pause" style="background-color: #c2cbe0;">Pause</button>
-                    <button id="reset" style="background-color: #e0e0e0;">Reset</button>
+        <div class="container-clock">
+            <div class="clock">
+                <div style="--clr: #0094f7; --h: 65px" id="hour" class="hand">
+                    <i></i>
+                </div>
+                <div style="--clr: #000000; --h: 84px" id="min" class="hand">
+                    <i></i>
+                </div>
+                <div style="--clr: #ff0000; --h: 94px" id="sec" class="hand">
+                    <i></i>
                 </div>
 
-                <!-- Stopwatch Time Input -->
-                <label for="timeInput">Time :</label>
-                <input type="text" id="timeInput" name="timeInput" readonly disabled><br><br>
-
-                <!-- Rate Input and Calculate Button -->
-                <label for="rate">Rate &nbsp;:</label>
-                <input type="number" id="rate" name="rate" step="0.01" placeholder="Rs. per hour" required><br><br>
-                <button id="calculate">Calculate</button><br><br>
-
-                <!-- Loading Indicator -->
-                <div id="loading">Submitting...</div>
-                <br>
-                <!-- Registration Form -->
-                <form id="registerForm">
-                    <label for="totalRupees">Total:</label>
-                    <input type="text" id="totalRupees" name="totalRupees" required disabled><br><br>
-                    <button type="submit" id="submitBtn">Submit</button>
-                </form>
+                <span style="--i: 1"><b>1</b></span>
+                <span style="--i: 2"><b>2</b></span>
+                <span style="--i: 3"><b>3</b></span>
+                <span style="--i: 4"><b>4</b></span>
+                <span style="--i: 5"><b>5</b></span>
+                <span style="--i: 6"><b>6</b></span>
+                <span style="--i: 7"><b>7</b></span>
+                <span style="--i: 8"><b>8</b></span>
+                <span style="--i: 9"><b>9</b></span>
+                <span style="--i: 10"><b>10</b></span>
+                <span style="--i: 11"><b>11</b></span>
+                <span style="--i: 12"><b>12</b></span>
             </div>
         </div>
     </section>
-
-    <script>
-        // Stopwatch Logic
-        let timer;
-        let elapsedTime = 0;
-        let isRunning = false;
-
-        function formatTime(ms) {
-            const date = new Date(ms);
-            return date.toISOString().substr(11, 8);
-        }
-
-        function startStopwatch() {
-            if (!isRunning) {
-                isRunning = true;
-                timer = setInterval(() => {
-                    elapsedTime += 1000;
-                    document.getElementById('time').textContent = formatTime(elapsedTime);
-                }, 1000);
-            }
-        }
-
-        function pauseStopwatch() {
-            if (isRunning) {
-                clearInterval(timer);
-                timer = null;
-                isRunning = false;
-            }
-        }
-
-        function resetStopwatch() {
-            // Store the current time in the input field
-            document.getElementById('timeInput').value = formatTime(elapsedTime);
-
-            // Reset the stopwatch
-            pauseStopwatch();
-            elapsedTime = 0;
-            document.getElementById('time').textContent = formatTime(elapsedTime);
-        }
-
-        function calculateCost() {
-            const timeInput = document.getElementById('timeInput').value;
-            const rate = parseFloat(document.getElementById('rate').value);
-
-            if (!timeInput || isNaN(rate)) {
-                alert('Please make sure time and rate are valid.');
-                return;
-            }
-
-            // Convert timeInput (HH:MM:SS) to total hours
-            const [hours, minutes, seconds] = timeInput.split(':').map(Number);
-            const totalHours = hours + minutes / 60 + seconds / 3600;
-
-            // Calculate cost
-            const cost = totalHours * rate;
-
-            // Update the totalRupees field with the calculated cost
-            document.getElementById('totalRupees').value = cost.toFixed(2);
-        }
-
-        document.getElementById('play').addEventListener('click', startStopwatch);
-        document.getElementById('pause').addEventListener('click', pauseStopwatch);
-        document.getElementById('reset').addEventListener('click', resetStopwatch);
-        document.getElementById('calculate').addEventListener('click', calculateCost);
-
-        // Prevent multiple form submissions
-        document.getElementById('registerForm').addEventListener('submit', async (event) => {
-            event.preventDefault();
-
-            const submitBtn = document.getElementById('submitBtn');
-            const loadingIndicator = document.getElementById('loading');
-
-            // Disable the submit button
-            submitBtn.disabled = true;
-            // Show the loading indicator
-            loadingIndicator.style.display = 'block';
-
-            const totalRupees = document.getElementById('totalRupees').value;
-            const sheetName = document.getElementById('sheetName').value;
-            const timeInput = document.getElementById('timeInput').value;
-            const rate = document.getElementById('rate').value;
-            const type = document.getElementById('type').value;
-
-            try {
-                const response = await fetch('https://script.google.com/macros/s/AKfycbyW80mkDB1-szHVB2m-uEEqcCIOt9e5oTD-uQv91qy8UFe0aYy-h0PW8GDX7-iHaunaGA/exec?action=submitData', { // Replace with your deployment URL
-                    method: 'POST',
-                    body: JSON.stringify({ type, totalRupees, sheetName, timeInput, rate })
-                });
-
-                const result = await response.json();
-                alert(result.message);
-                window.location.reload();
-            } catch (error) {
-                console.error('Error submitting data:', error);
-                alert('Failed to submit data');
-            } finally {
-                // Enable the submit button and hide the loading indicator
-                submitBtn.disabled = false;
-                loadingIndicator.style.display = 'none';
-            }
-        });
-
-        // Fetch sheet names
-        const fetchSheetNames = async () => {
-            try {
-                const response = await fetch('https://script.google.com/macros/s/AKfycbyW80mkDB1-szHVB2m-uEEqcCIOt9e5oTD-uQv91qy8UFe0aYy-h0PW8GDX7-iHaunaGA/exec?action=getSheetNames'); // Replace with your deployment URL
-                const data = await response.json();
-                const select = document.getElementById('sheetName');
-                data.sheetNames.forEach(sheet => {
-                    const option = document.createElement('option');
-                    option.value = sheet.name;
-                    option.textContent = sheet.name;
-                    select.appendChild(option);
-                });
-            } catch (error) {
-                console.error('Error fetching sheet names:', error);
-            }
-        };
-
-        fetchSheetNames();
-
-        // Handle "Bojha" selection
-        document.getElementById('type').addEventListener('change', function() {
-            if (this.value === 'Bojha') {
-                // Disable stopwatch and auto-fill Time and Rate with '00'
-                document.getElementById('play').disabled = true;
-                document.getElementById('pause').disabled = true;
-                document.getElementById('reset').disabled = true;
-                document.getElementById('timeInput').value = '00:00:00';
-                document.getElementById('rate').value = '0.00';
-                document.getElementById('totalRupees').disabled = false;
-            } else {
-                // Enable stopwatch and clear the fields
-                document.getElementById('play').disabled = false;
-                document.getElementById('pause').disabled = false;
-                document.getElementById('reset').disabled = false;
-                document.getElementById('timeInput').value = '';
-                document.getElementById('rate').value = '';
-                document.getElementById('totalRupees').disabled = true;
-            }
-        });
-    </script>
+    <script src="./assets/java/driver/driver.js"></script>
 </body>
 
 </html>
