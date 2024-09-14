@@ -319,7 +319,7 @@ section {
 }
 .calculation{
     margin: 110px 0;
-    min-width: 380px;
+    min-width: 320px;
     padding: 25px;
     border: none;
     border-radius: 20px;
@@ -425,7 +425,7 @@ th {
 }
 
 select, input{
-  width: 78%;
+  width: 73%;
   margin-bottom: 10px;
   border: none;
   font-size: 15px;
