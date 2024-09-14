@@ -7,20 +7,20 @@ const body = document.querySelector("body"),
        close = document.querySelector(".close");
       
 
-       // nav bar scroll up and down with windows
+    //    // nav bar scroll up and down with windows
 
-       let prevScrollpos = window.pageYOffset;
-       window.addEventListener("scroll", ()=>{
-           let currentScrollpos = window.pageYOffset;
-       if(prevScrollpos < currentScrollpos){
-            header.classList.add("hide");
-            arrowTop.classList.add("show");
-       }else{
-            header.classList.remove("hide");
-            arrowTop.classList.remove("show");
-       }
-       prevScrollpos = currentScrollpos;
-       })
+    //    let prevScrollpos = window.pageYOffset;
+    //    window.addEventListener("scroll", ()=>{
+    //        let currentScrollpos = window.pageYOffset;
+    //    if(prevScrollpos < currentScrollpos){
+    //         header.classList.add("hide");
+    //         arrowTop.classList.add("show");
+    //    }else{
+    //         header.classList.remove("hide");
+    //         arrowTop.classList.remove("show");
+    //    }
+    //    prevScrollpos = currentScrollpos;
+    //    })
        
 
         // for always selector dark or light mode
@@ -134,3 +134,71 @@ const body = document.querySelector("body"),
        location.reload();
    }
    
+
+   // For STore in Google sheet
+
+    // Update this function with the URL of your Google Apps Script web app
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbw7sWAFmDcAhrDOQxyePhY2G85dZAVUWyPlE_Dojqqp-4bdC7C3NxVAiGDPiL_ns_bDOQ/exec';
+
+    // Function to populate dropdown with sheet names
+    function populateDropdown() {
+        fetch(scriptURL)
+            .then(response => response.json())
+            .then(data => {
+                const dropdown = document.getElementById('sheetDropdown');
+                dropdown.innerHTML = ''; // Clear existing options
+                dropdown.appendChild(new Option('Select a sheet', '')); // Add a default option
+                data.sheets.forEach(sheet => {
+                    const option = document.createElement('option');
+                    option.value = sheet;
+                    option.textContent = sheet;
+                    dropdown.appendChild(option);
+                });
+                dropdown.addEventListener('change', handleDropdownChange);
+            })
+            .catch(error => console.error('Error fetching sheet names:', error));
+    }
+
+    // Function to handle dropdown change
+    function handleDropdownChange() {
+        const selectedSheet = document.getElementById('sheetDropdown').value;
+        const additionalInputs = document.getElementById('additionalInputs');
+
+        if (selectedSheet) {
+            additionalInputs.style.display = 'block'; // Show inputs if a sheet is selected
+        } else {
+            additionalInputs.style.display = 'none'; // Hide inputs if no sheet is selected
+        }
+    }
+
+    // Function to handle submit button click
+    // Update this function with the URL of your Google Apps Script web app
+  
+    // Function to handle submit button click
+    function submitData() {
+        const selectedSheet = document.getElementById('sheetDropdown').value;
+        const date = document.getElementById('dateInput').value;
+        const type = document.getElementById('typeDropdown').value;
+        const totalTime = document.getElementById('totalTime').textContent.replace('Total Time: ', '');
+        const rate = document.getElementById('rate').value;
+        const totalCost = document.getElementById('totalCost').textContent.replace('Total Rs: ', '').replace('₹', '');
+
+        fetch(scriptURL, {
+            method: 'POST',
+          
+            body: JSON.stringify({ sheet: selectedSheet, date: date, type: type, totalTime: totalTime, rate: rate, totalCost: totalCost })
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Data submitted successfully.');
+                    location.reload();
+                } else {
+                    alert('Error: ' + data.message);
+                }
+            })
+            .catch(error => console.error('Error submitting data:', error));
+    }
+
+    // Call this function on page load
+    document.addEventListener('DOMContentLoaded', populateDropdown);

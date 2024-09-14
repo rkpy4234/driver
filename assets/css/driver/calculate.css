@@ -312,13 +312,14 @@ section {
     width: 100%;
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
+    justify-content: center;
     align-items: center;  
     background-color: var(--body-color);  
 }
 .calculation{
-    margin-top: 130px;
-    width: auto;
+    margin: 110px 0;
+    min-width: 380px;
     padding: 25px;
     border: none;
     border-radius: 20px;
@@ -326,30 +327,41 @@ section {
     box-shadow: var(--box-shadow);
 }
 .calculation h1{
+    font-weight: 650;
     text-align: center;
     margin: 10px 0 20px 0;
 }
 
 .calculation_time{
-    font-size: 15px;
-    margin: 10px 40px 20px 0;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    margin: 10px 0 20px 0;
   
 }
 .input-container{
+    font-size: 20px;
     margin-bottom: 20px;
     text-align: center;
 }
+#timeTable{
+  font-size: 15px;
+}
 .rate-container{
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     width: 100%;
 }
 
+.calculate label{
+  font-size: 20px;
+}
 .input-container input{
     color: var(--text-color);
     margin: 0 3px;
-    font-size: 17px;
-    min-height: 30px;
-    width: 43px;
+    padding: 5px;
+    font-size: 20px;
+    min-height: 35px;
+    width: 80px;
     text-align: center;
     border: none;
     border-radius: 5px;
@@ -361,21 +373,21 @@ section {
     color: var(--hover-txt-color);
     box-shadow: var(--box-inset-shadow);
 }
-.rate-container input{
-    padding-left: 10px;
-    min-height: 30px;
-    width: 90px;
-    font-size: 12px;
-    border: none;
-    border-radius: 5px;
-    outline: none;
-    background-color: var(--body-color);
-    box-shadow: var(--box-shadow);
+
+
+.calc{
+  margin-top: 15px;
+  padding: 0;
+  width: 100%;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
 }
-.rate-container button{
-    float: right;
-    
+.calc button{
+  box-shadow: var(--box-shadow);
 }
+
 button {
     padding:0 10px 0 10px;
     min-height: 30px;
@@ -412,8 +424,29 @@ th {
     background-color: var(--body-color);
 }
 
-.clear-container button {
-    margin-top: 10px;
-    background-color: #db8534;
+select, input{
+  width: 78%;
+  margin-bottom: 10px;
+  border: none;
+  font-size: 15px;
+  padding: 5px;
+  outline: none;
+  color: #3498db;
+  background-color: var(--body-color);
+  box-shadow: var(--box-shadow);
+  border-radius: 5px;
 }
+select:hover{
+  box-shadow: var(--box-inset-shadow);
+}
+input:hover{
+  box-shadow: var(--box-inset-shadow);
+}
+.btn-submit{
+  width: 100%;
+  right: 0;
+  text-align: right;
+}
+
+
 

@@ -9,18 +9,18 @@ const body = document.querySelector("body"),
 
         // nav bar scroll up and down with windows
 
-        let prevScrollpos = window.pageYOffset;
-        window.addEventListener("scroll", () => {
-            let currentScrollpos = window.pageYOffset;
-            if (prevScrollpos < currentScrollpos) {
-                header.classList.add("hide");
-                arrowTop.classList.add("show");
-            } else {
-                header.classList.remove("hide");
-                arrowTop.classList.remove("show");
-            }
-            prevScrollpos = currentScrollpos;
-        })
+        // let prevScrollpos = window.pageYOffset;
+        // window.addEventListener("scroll", () => {
+        //     let currentScrollpos = window.pageYOffset;
+        //     if (prevScrollpos < currentScrollpos) {
+        //         header.classList.add("hide");
+        //         arrowTop.classList.add("show");
+        //     } else {
+        //         header.classList.remove("hide");
+        //         arrowTop.classList.remove("show");
+        //     }
+        //     prevScrollpos = currentScrollpos;
+        // })
 
 
         // for always selector dark or light mode
