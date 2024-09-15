@@ -31,7 +31,7 @@
                 <li><a href="start.html">Start</a></li>
                 <li><a href="calculate.html">Calculator</a></li>
                 <li><a href="payment.html">Payment</a></li>
-                <li><a href="create.html">New</a></li>
+                <li><a href="create.html">नयाँ ग्राहक</a></li>
                 <li><a href="https://www.ramkrishna4234.com.np/">LogOut</a></li>
             </ul>
         </nav>
@@ -44,34 +44,64 @@
         </div>
     </header>
 
-    <section>
-        <div class="container-clock">
-            <div class="clock">
-                <div style="--clr: #0094f7; --h: 65px" id="hour" class="hand">
-                    <i></i>
-                </div>
-                <div style="--clr: #000000; --h: 84px" id="min" class="hand">
-                    <i></i>
-                </div>
-                <div style="--clr: #ff0000; --h: 94px" id="sec" class="hand">
-                    <i></i>
-                </div>
+    <div class="container-fluid">
+        <div class="container">
+            <div class="view">
+                <h1>रेकर्ड</h1>
 
-                <span style="--i: 1"><b>1</b></span>
-                <span style="--i: 2"><b>2</b></span>
-                <span style="--i: 3"><b>3</b></span>
-                <span style="--i: 4"><b>4</b></span>
-                <span style="--i: 5"><b>5</b></span>
-                <span style="--i: 6"><b>6</b></span>
-                <span style="--i: 7"><b>7</b></span>
-                <span style="--i: 8"><b>8</b></span>
-                <span style="--i: 9"><b>9</b></span>
-                <span style="--i: 10"><b>10</b></span>
-                <span style="--i: 11"><b>11</b></span>
-                <span style="--i: 12"><b>12</b></span>
+    
+                <!-- Dropdown for Google Sheets -->
+                <label for="sheetDropdown">ग्राहक :</label>
+                <select id="sheetDropdown" onchange="fetchData()">
+                    <option value="">ग्राहक को नाम...</option>
+                </select>
+
+                  <!-- Table 2: G2 to I (Only one row) -->                 
+                  <table id="table2" class="table table-hover" style="margin-top: 35px;">
+                      <thead>
+                          <tr>
+                              <th>जम्मा रुपैया</th>
+                              <th>जम्मा दिएको </th>
+                              <th>बाकी रुपैया </th>
+                          </tr>
+                      </thead>
+                      <tbody></tbody>
+                  </table>
+
+                  <!-- Table 3: J2 to K (All rows) -->               
+                <table id="table3" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>रुपैया दिएको</th>
+                            <th>दिएको मिती </th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+
+                <!-- Table 1: A2 to E (All rows) -->
+                 <div class="record">
+                    <table id="table1" class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>मिती</th>
+                                <th>प्रकार</th>
+                                <th>लागेको_समय</th>
+                                <th>दर</th>
+                                <th>रुपैया</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                 </div>
+                
+
+              
+
+                
             </div>
         </div>
-    </section>
+    </div>
     <script src="./assets/java/driver/driver.js"></script>
 </body>
 

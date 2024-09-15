@@ -78,28 +78,104 @@ const body = document.querySelector("body"),
         //     }
         // });
 
-        //for analog Clock
+        //View Data according to provideed sheet name
 
-        let hr = document.getElementById('hour');
-        let min = document.getElementById('min');
-        let sec = document.getElementById('sec');
+        // Function to fetch the list of sheet names and populate the dropdown
+        function getSheetNames() {
+            const scriptUrl = 'https://script.google.com/macros/s/AKfycbwgDpAhZHFfmuR5l8Bu5X0Kop2mj6O2U3I9p7YLrAfJA0QcUZsY6ll8Kaj1BpJwOy-1dA/exec';
 
-        function displayTime() {
-            let date = new Date();
-
-            // Getting hour, mins, secs from date
-            let hh = date.getHours();
-            let mm = date.getMinutes();
-            let ss = date.getSeconds();
-
-            let hRotation = 30 * hh + mm / 2;
-            let mRotation = 6 * mm;
-            let sRotation = 6 * ss;
-
-            hr.style.transform = `rotate(${hRotation}deg)`;
-            min.style.transform = `rotate(${mRotation}deg)`;
-            sec.style.transform = `rotate(${sRotation}deg)`;
-
+            fetch(`${scriptUrl}?action=getSheetNames`)
+                .then(response => response.json())
+                .then(data => populateDropdown(data))
+                .catch(error => console.error('Error fetching sheet names:', error));
         }
 
-        setInterval(displayTime, 1000);
+        // Function to populate the dropdown with sheet names
+        function populateDropdown(sheets) {
+            const dropdown = document.getElementById('sheetDropdown');
+            sheets.forEach(sheet => {
+                const option = document.createElement('option');
+                option.value = sheet;
+                option.text = sheet;
+                dropdown.appendChild(option);
+            });
+        }
+
+        // Function to fetch data when a sheet is selected
+        function fetchData() {
+            const sheetName = document.getElementById('sheetDropdown').value;
+            if (sheetName) {
+                const scriptUrl = 'https://script.google.com/macros/s/AKfycbwgDpAhZHFfmuR5l8Bu5X0Kop2mj6O2U3I9p7YLrAfJA0QcUZsY6ll8Kaj1BpJwOy-1dA/exec';
+                const url = `${scriptUrl}?action=getSheetData&sheetName=${sheetName}`;
+
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => populateTables(data))
+                    .catch(error => console.error('Error fetching sheet data:', error));
+            }
+        }
+
+        // Function to format dates as YYYY.MM.DD
+        function formatDate(date) {
+            const d = new Date(date);
+            const year = d.getFullYear();
+            const month = ('0' + (d.getMonth() + 1)).slice(-2); // Months are zero-based
+            const day = ('0' + d.getDate()).slice(-2);
+            return `${year}.${month}.${day}`;
+        }
+
+        // Function to populate tables with fetched data, only showing rows with data
+        function populateTables(data) {
+            const table1 = document.getElementById('table1').getElementsByTagName('tbody')[0];
+            const table2 = document.getElementById('table2').getElementsByTagName('tbody')[0];
+            const table3 = document.getElementById('table3').getElementsByTagName('tbody')[0];
+
+            // Clear previous data
+            table1.innerHTML = '';
+            table2.innerHTML = '';
+            table3.innerHTML = '';
+
+            // Table 1: A2 to E (all rows)
+            data.table1.forEach(row => {
+                // Check if the row has data in columns A to E
+                if (row.some(cell => cell !== '' && cell !== null)) {
+                    let newRow = table1.insertRow();
+                    row.forEach((cell, index) => {
+                        let cellElement = newRow.insertCell();
+                        if (index === 0) { // Format date in Column A
+                            cellElement.innerText = formatDate(cell);
+                        } else {
+                            cellElement.innerText = cell;
+                        }
+                    });
+                }
+            });
+
+            // Table 2: G2 to I (only one row)
+            let row2 = table2.insertRow();
+            data.table2.forEach(cell => {
+                let cellElement = row2.insertCell();
+                cellElement.innerText = cell;
+            });
+
+            // Table 3: J2 to K (all rows)
+            data.table3.forEach(row => {
+                // Check if the row has data in columns J and K
+                if (row.some(cell => cell !== '' && cell !== null)) {
+                    let newRow = table3.insertRow();
+                    row.forEach((cell, index) => {
+                        let cellElement = newRow.insertCell();
+                        if (index === 1) { // Format date in Column K
+                            cellElement.innerText = formatDate(cell);
+                        } else {
+                            cellElement.innerText = cell;
+                        }
+                    });
+                }
+            });
+        }
+
+        // Call the function to populate the dropdown when the page loads
+        window.onload = getSheetNames;
+
+        

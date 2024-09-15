@@ -26,21 +26,23 @@
     }
 
     :root {
-        --body-color: #dde1e7;
-        --nav-color: #dde1e7;
-        --side-nav: #dde1e7;
-        --text-color: #595959;
-        --search-bar: #595959;
-        --search-text: #595959;
-        --hover-txt-color: #3498db;
-        --box-shadow: -3px -3px 7px #ffffff73,
-            2px 2px 5px rgba(94, 101, 121, 0.288);
-        --box-inset-shadow: inset 2px 2px 5px #babecc,
-            inset -5px -5px 10px #ffffff73;
-        --transparent-color: rgba(221, 225, 231, 0.8);
-        /* Site Max-Width */
-        --site-max-width: 1350px;
-    }
+          --body-color: #dde1e7;
+          --nav-color: #dde1e7;
+          --side-nav: #dde1e7;
+          --text-color: #595959;
+          --header: #2C3E50;
+          --search-bar: #595959;
+          --search-text: #595959;
+          --hover-txt-color: #1A73E8;
+          --box-shadow: -3px -3px 7px rgba(94, 101, 121, 0.288),
+                        2px 2px 5px rgba(94, 101, 121, 0.288);
+          --box-inset-shadow: inset 2px 2px 5px #babecc,
+              inset -5px -5px 10px #ffffff73;
+          --transparent-color: rgba(221, 225, 231, 0.8);
+
+          /* Site Max-Width */
+          --site-max-width: 1350px;
+      }
 
     body.dark {
         --body-color: #595959;
@@ -361,6 +363,11 @@
         border-radius: 20px;
         box-shadow: var(--box-shadow);
     }
+    .newsheet h1{
+        font-size: 35px;
+        font-weight: 650;
+        text-align: center;
+    }
 
     .new label {
         margin-top: 10px;
@@ -414,7 +421,7 @@
                 <li><a href="start.html">Start</a></li>
                 <li><a href="calculate.html">Calculator</a></li>
                 <li><a href="payment.html">Payment</a></li>
-                <li><a href="create.html">New</a></li>
+                <li><a href="create.html">नयाँ ग्राहक</a></li>
                 <li><a href="https://www.ramkrishna4234.com.np/">LogOut</a></li>
             </ul>
         </nav>
@@ -431,10 +438,10 @@
     <section>
         <div class="new">
             <div class="newsheet">
-                <h1>New Customer Name</h1>
+                <h1>नयाँ ग्राहक </h1>
                 <form id="sheetForm">
-                    <label for="sheetName">Customer Name:</label><br>
-                    <input type="text" id="sheetName" name="sheetName" required><br><br>
+                    <label for="sheetName">ग्राहकको नाम:</label><br>
+                    <input type="text" id="sheetName" name="sheetName" required placeholder="ग्राहकको नाम...."><br><br>
                     <div class="btn">
                         <input type="submit" value="Register">
                     </div>
@@ -530,7 +537,7 @@
             var sheetName = form.sheetName.value;
 
             // Make an HTTP POST request to the Google Apps Script web app
-            fetch('https://script.google.com/macros/s/AKfycbxqfBtHcLBtzFA2JZ5ae_ruxCZ4jZzyqU2w8R1kjGUmio75Bb-5PHduyxtZFJ6I1VE3GA/exec', {
+            fetch('https://script.google.com/macros/s/AKfycbzgq01QQ9RyMIU_hPPSuvIBMFzpbA0ucM7uC0WmPf4TWnqvJV09OnOmCKB-tZQVYr0D/exec', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'

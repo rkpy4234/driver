@@ -160,7 +160,7 @@ const body = document.querySelector("body"),
        const type = document.getElementById('type').value;
 
        try {
-           const response = await fetch('https://script.google.com/macros/s/AKfycbyW80mkDB1-szHVB2m-uEEqcCIOt9e5oTD-uQv91qy8UFe0aYy-h0PW8GDX7-iHaunaGA/exec?action=submitData', { // Replace with your deployment URL
+           const response = await fetch('https://script.google.com/macros/s/AKfycbwW8OuQLwCS7wKIZNCrUJia9lDOiQ4Ukgr98k6tKTvHhqAfj7w0hAC-goF_er3spTdojg/exec?action=submitData', { // Replace with your deployment URL
                method: 'POST',
                body: JSON.stringify({ type, totalRupees, sheetName, timeInput, rate })
            });
@@ -181,7 +181,7 @@ const body = document.querySelector("body"),
    // Fetch sheet names
    const fetchSheetNames = async () => {
        try {
-           const response = await fetch('https://script.google.com/macros/s/AKfycbyW80mkDB1-szHVB2m-uEEqcCIOt9e5oTD-uQv91qy8UFe0aYy-h0PW8GDX7-iHaunaGA/exec?action=getSheetNames'); // Replace with your deployment URL
+           const response = await fetch('https://script.google.com/macros/s/AKfycbwW8OuQLwCS7wKIZNCrUJia9lDOiQ4Ukgr98k6tKTvHhqAfj7w0hAC-goF_er3spTdojg/exec?action=getSheetNames'); // Replace with your deployment URL
            const data = await response.json();
            const select = document.getElementById('sheetName');
            data.sheetNames.forEach(sheet => {
