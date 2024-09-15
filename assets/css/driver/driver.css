@@ -361,6 +361,7 @@
       }
       select{
         width: 78%;
+        min-height: 35px;
         padding-left: 8px;
         outline: none;
         border: none;
